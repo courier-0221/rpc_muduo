@@ -459,6 +459,6 @@ void RpcServer::onMessage(const TcpConnectionPtr conn, Buffer* buf)
 
 ## 7.时序图
 
-![](./img/时序图.png)
+![](/img/时序图.png)
 
 左半部分为client端的流程，右半部分为对应服务端的处理流程
