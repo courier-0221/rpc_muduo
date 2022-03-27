@@ -1,15 +1,5 @@
 #include "ProtobufCodecLite.h"
 
-namespace
-{
-    int ProtobufVersionCheck()
-    {
-        GOOGLE_PROTOBUF_VERIFY_VERSION;
-        return 0;
-    }
-    int __attribute__ ((unused)) dummy = ProtobufVersionCheck();
-}
-
 ProtobufCodecLite::ProtobufCodecLite(const RpcMeta::RpcMetaMessage* prototype,
                       std::string tagArg,
                       const ProtobufMessageCallback& messageCb,

@@ -1,4 +1,5 @@
-TARGET := RpcCodecDemo
+SERVER := ServerDemo
+CLIENT := ClientDemo
 
 MUDUO_SRC := ../../simplifyMuduo/src/
 MUDUO_INC := ../../simplifyMuduo/include/
@@ -6,21 +7,24 @@ MUDUO_INC := ../../simplifyMuduo/include/
 RPC_SRC := ../../rpc/
 RPC_INC := ../../rpc/
 
+SUDOKU_INC := ./
+
 COMMON_LIB := -lpthread -lprotobuf -lz -pthread
 
 CXX = g++
 CPPFLAGS = -g -O2 -Wall -std=c++11
 CPPFLAGS += $(addprefix -I,$(MUDUO_INC))
 CPPFLAGS += $(addprefix -I,$(RPC_INC))
+CPPFLAGS += $(addprefix -I,$(SUDOKU_INC))
 
 FILETYPE = cc
 OBJS := $(MUDUO_SRC)*.$(FILETYPE)
 OBJS += $(RPC_SRC)*.$(FILETYPE)
 
-all : $(TARGET)
-
-$(TARGET) : $(OBJS)
-	$(CXX) $(CPPFLAGS) RpcCodec_test.cc -o $(TARGET) $(OBJS) $(COMMON_LIB)
+all : $(OBJS)
+	$(CXX) $(CPPFLAGS) client.cc sudoku.pb.cc -o ClientDemo $(OBJS) $(COMMON_LIB)
+	$(CXX) $(CPPFLAGS) server.cc sudoku.pb.cc -o ServerDemo $(OBJS) $(COMMON_LIB)
 
 clean:
-	-rm -f $(TARGET)
+	-rm -f $(SERVER)
+	-rm -f $(CLIENT)
