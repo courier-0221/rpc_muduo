@@ -5,6 +5,8 @@
 ```cpp
 syntax = "proto2";
 
+option cc_generic_services = true;
+
 package sudoku;
 
 message SudokuRequest {
